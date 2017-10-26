@@ -13,6 +13,10 @@
 
             let numberPages = document.links;
 
+            // Numero de parrafos de la pagina
+
+            let numberP = document.getElementsByTagName("p");
+
             // Direccion del penultimo enlace
 
             let links = document.getElementsByTagName("a");
@@ -36,7 +40,15 @@
 
             // Numero de enlaces de todos los parrafos
 
-            let numberP = document.getElementsByTagName("p");
+            function searchLinksOnP() {
+                let numberP = document.getElementsByTagName("p");
+                let links = 0;
+                for (let i=0; numberP.length > i; i++){
+                    let count = numberP[i].getElementsByTagName("a");
+                    links = links + count.length;
+                }
+                return "Numero de enlaces en los parrafos: " + links;
+            }
 
             //Result
 
@@ -44,7 +56,9 @@
                     "Numero de parrafos: " + numberP.length + "\n" +
                     "Direccion del penultimo enlace: " + linkResult + "\n" +
                     "Direccion del ultimo enlace: " + lastLinkResult + "\n" +
-                    searcher()
+                    searcher() + "\n" +
+                    searchLinksOnP()
+
             );
 
         }
